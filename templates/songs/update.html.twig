@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifications{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-7">
+            <h1 class="text-center">Modifications</h1>
+
+
+			{% for level, messages in app.flashes %}
+				{% for message in messages %}
+					<div class="alert alert-{{ level }}">
+						{{ message|raw }}
+					</div>
+				{% endfor %}
+			{% endfor %}
+    
+            <form method="post" enctype="multipart/form-data">
+                <div class="form-row mb-3">
+					<label for="title" class="col-form-label col-4">Nom du titre value="{{ songs.title }}"</label>
+					<div class="col-8">
+						<input type="text" name="title" id="title" class="form-control" placeholder="Nom du titre musical">
+					</div>
+				</div>
+                <div class="form-row mb-3">
+					<label for="playlist" class="col-form-label col-4">Playlist</label>
+					<div class="col-8">
+                        <select name="playlist" id="playlist" class="form-control" required>
+                            <option value="" selected disabled>-- Sélectionnez --</option>
+                            {% for playlist in playlists %}
+                            <option value="{{ playlist.id }}">{{ playlist.name }}</option>
+                            {% endfor %}
+                        </select>
+					</div>
+				</div>
+                <div class="form-row mb-3">
+					<label for="video" class="col-form-label col-4">Lien youtube</label>
+                    <div class="col-8">
+						<input type="url" name="video" id="video" class="form-control">
+					</div>
+                </div>
+                <div class="form-row mb-3">
+					<label for="audio" class="col-form-label col-4">Fichier mp3</label>
+                    <div class="col-8">
+						<input type="file" name="audio" id="audio" class="form-control-file" accept="audio/mpeg,audio/mp3">
+                        <small class="form-text text-muted">Fichiers acceptés : mp3, 10Mo maxi</small>
+					</div>
+                </div>
+
+
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-dark">Enregister</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

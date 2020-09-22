@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des playlists
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-12">
+				<h1>Liste de mes playlists</h1>
+
+				<div class="row">
+					{% for playlist in playlists %}
+						<div class="col-6">
+							{{ playlist.name }}
+						</div>
+						<div class="col-6">
+							<a href="{{ path('playlists_view', {id_de_ma_playlist: playlist.id}) }}">
+								Voir cette playlist
+							</a>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	{% endblock %}

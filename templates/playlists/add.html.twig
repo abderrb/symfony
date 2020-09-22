@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un article{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-7">
+            <h1 class="text-center">Ajouter un article</h1>
+
+
+			{% for level, messages in app.flashes %}
+				{% for message in messages %}
+					<div class="alert alert-{{ level }}">
+						{{ message|raw }}
+					</div>
+				{% endfor %}
+			{% endfor %}
+
+
+            <form method="post" enctype="multipart/form-data">
+                <div class="form-row mb-3">
+					<label for="title" class="col-form-label col-4">Titre</label>
+					<div class="col-8">
+						<input type="text" name="title" id="title" class="form-control" placeholder="Titre de votre article">
+					</div>
+				</div>
+
+                <div class="form-row mb-3">
+					<label for="content" class="col-form-label col-4">Contenu</label>
+					<div class="col-8">
+						<textarea name="content" id="content" class="form-control" placeholder="Contenu de votre article..."></textarea>
+					</div>
+				</div>
+
+                <div class="form-row mb-3">
+					<label for="image" class="col-form-label col-4">Image</label>
+					<div class="col-8">
+						<input type="file" name="userfile" id="image" class="form-control-file">
+					</div>
+				</div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-dark">Enregister</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
